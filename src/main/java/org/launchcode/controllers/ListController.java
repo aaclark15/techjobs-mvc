@@ -18,6 +18,7 @@ public class ListController {
 
     static HashMap<String, String> columnChoices = new HashMap<>();
 
+    //constructor to populate columnChoices with values
     public ListController () {
         columnChoices.put("core competency", "Skill");
         columnChoices.put("employer", "Employer");
@@ -26,6 +27,7 @@ public class ListController {
         columnChoices.put("all", "All");
     }
 
+    //displays diff types of lists the user can view
     @RequestMapping(value = "")
     public String list(Model model) {
 
@@ -40,6 +42,7 @@ public class ListController {
         if (column.equals("all")) {
             ArrayList<HashMap<String, String>> jobs = JobData.findAll();
             model.addAttribute("title", "All Jobs");
+            model.addAttribute("columns", columnChoices);
             model.addAttribute("jobs", jobs);
             return "list-jobs";
         } else {
@@ -58,6 +61,7 @@ public class ListController {
 
         ArrayList<HashMap<String, String>> jobs = JobData.findByColumnAndValue(column, value);
         model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
+        model.addAttribute("columns", columnChoices);
         model.addAttribute("jobs", jobs);
 
         return "list-jobs";

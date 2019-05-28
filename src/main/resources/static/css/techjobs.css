@@ -27,3 +27,12 @@ table.job-listing td:last-child {
 label {
     margin-right: 15px;
 }
+#fields {
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+span {
+    font-weight: bold;
+    font-size: 150%;
+}
